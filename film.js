@@ -59,7 +59,7 @@ const renderFilm = film => {
     directorSpan.textContent = film?.director;
     const charsLis = film?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
     charctersUl.innerHTML = charsLis.join("");
-    const planetsLis = film?.planets?.map(planet => `<li><a href="/character.html?id=${planet.id}">${planet.name}</li>`)
+    const planetsLis = film?.planets?.map(planet => `<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`)
     planetsUl.innerHTML = planetsLis.join("");
   }
 
