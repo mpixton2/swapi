@@ -4,6 +4,7 @@ let producerSpan
 let directorSpan 
 let charctersUl
 let planetsUl
+//The could be a single object to hold all id elements for possibly cleaner code
 
 addEventListener('DOMContentLoaded', () => {
     titleH1 = document.querySelector('h1#title');
@@ -26,6 +27,9 @@ async function getFilm(id) {
     }
     catch (ex) {
         console.error(`Error reading Films ${id} data.`, ex.message);
+        document.location.href = 'error.html'
+        //An alert or redirect to the user or something other than the standard html error page/ nothing
+        //for user could be helpful
     }
 
     console.log("The Film was loaded successfully", film)
@@ -58,6 +62,7 @@ const renderFilm = film => {
     producerSpan.textContent = film?.producer;
     directorSpan.textContent = film?.director;
     const charsLis = film?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
+    // This list reference creation line is a little confusing, could be split into multiple lines for clarity 
     charctersUl.innerHTML = charsLis.join("");
     const planetsLis = film?.planets?.map(planet => `<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`)
     planetsUl.innerHTML = planetsLis.join("");
